@@ -28,7 +28,7 @@ jobs:
           cache: true
 
       - name: Build web release
-        run: flutter build web --release --base-href /acronyms/
+        run: flutter build web --release --base-href /Acronyms/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
