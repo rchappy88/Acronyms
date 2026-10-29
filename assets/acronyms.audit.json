@@ -1,0 +1,757 @@
+{
+  "source_paragraphs": 18221,
+  "unique_entries": 21085,
+  "review_rows": 2655,
+  "review_samples": [
+    {
+      "paragraph": 7,
+      "text": "2C (PM)\tSecond Customer (Pivotal Management) 2CMG\tCustomer 2 Management Group",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 10,
+      "text": "2nd PUS\tSecond Permanent Under Secretary of State 2SL\tSecond Sea Lord",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 11,
+      "text": "2SL/CNH\tSecond Sea Lord Commander in Chief Naval Home Command 3GL\tThird Generation Language",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 18,
+      "text": "A&A\tApproval and Authorisation A&AEW\tAvionics And Air Electronic Warfare A&E\tAssurance and Evaluations",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 23,
+      "text": "A/AS\tAdvanced/Advanced Supplementary A/D conv\tAnalogue/ Digital Conversion",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 53,
+      "text": "AAAV\tAdvanced Amphibious Assault Vehicle AAAW\tAdvanced Airborne Anti-Armour Weapon AABM\tAir-to-Air Battle Management",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 58,
+      "text": "AACMI\tAutonomous Air Combat Manoeuvring Installation AACOMS\tArmy Area Communications System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 67,
+      "text": "AADGE\tAllied Command Europe Air Defence Ground Environment AAE\tArms Ammunition & Explosives",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 69,
+      "text": "AAEE\t Aeroplane and Armament Experimental Establishment AAF\tAuxiliary Air Force",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 78,
+      "text": "AAICP\tAir-to-Air Interrogator Control Panel AAIED\tAnti Armour Improvised Explosive Device",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 82,
+      "text": "AALAAW\tAdvanced Air-Launched Anti-Armour Weapon AALC\tAmphibious Assault Landing Craft",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 86,
+      "text": "AAMI\tAssociation for the Advancement of Medical Instrumentation AAMOUR\tAnglo-Australian Memorandum Of Understanding on Research AAMTU\tAutomatic Antenna Matching and Tuning Unit",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 87,
+      "text": "AANCP\tAdvanced Airborne National Command Post AAO\tAgency Accounting Officer",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 95,
+      "text": "AAPSO\tAfro-Asian Peoples' Solidarity Organisation AAQMG\tAssistant Adjutant and Quartermaster General AAR\tAfter Action Review",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 98,
+      "text": "AARADCOM\tArmy Armament Research and Development Command AARB\tAdvanced Aerial Refuelling Boom",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 103,
+      "text": "AATDC\tArmy Air Transport and Development Centre AATH\tAutomatic Approach to Hover",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 120,
+      "text": "AAWS\tAdvanced Anti-tank Weapon System AAWS-H\tAnti-Armour Weapons System – Heavy",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 121,
+      "text": "AAWS-M\tAdvanced Anti-tank Weapon System – Medium AAWWS\tAirborne Adverse Weather Weapon System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 130,
+      "text": "ABACUS\tAll Arms Battlefield Computer Simulation ABACUS\tArtillery Battery Computer Support system ABC\tAcquisition Behavioural Competences",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 142,
+      "text": "ABCCC\tAirborne Battlefield Command and Control Centre ABCD\tAmerican British Chinese and Dutch",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 143,
+      "text": "ABCF\t Acquisition Behavioural Competence Framework ABDR\tAircraft Battle Damage Repair",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 180,
+      "text": "ABS(T)\t Amphibious Bridging System (Tracked) ABS(W)\tAmphibious Bridging System (Wheeled) ABSA\t Advanced Base Support Aircraft",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 182,
+      "text": "ABSOC\tAdvanced Broadcasting Systems of Canada ABSV\tArmoured Battlefield Support Vehicle",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 204,
+      "text": "AC & CS\tAir Command & Control Systems Ac Comd\tAircraft Commander",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 207,
+      "text": "AC/RC\tActive Component/Reserve Component ACA\tAirspace Control Authority",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 215,
+      "text": "ACALS\t Army Computer aided Acquisitions and Logistic Support ACAM\tAUV Concept Assessment Model",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 217,
+      "text": "ACARD\tAdvisory Council for Applied Research and Development ACARS\tAutomatic Communications and Reporting System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 218,
+      "text": "ACAS\tAdvisory, Conciliation and Arbitration Service ACAS\t Airborne/Aircraft Collision Avoidance System ACAS\t Airfield Chemical Alarm System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 220,
+      "text": "ACAST\tAdvisory Committee on the Application of Science and Technology ACBS\tAtmosphere Control Breathing System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 229,
+      "text": "ACCAC\tQualifications Curriculum and Assessment Authority for Wales ACCAP\tACE CIS Contingency Assets Pool",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 230,
+      "text": "ACCE\tAFCEA Computing Conference and Exhibition ACCESS\tAircraft Computerised Equipment Support System ACCESS\tWAH64 Attack Helicopter Logistic Support System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 233,
+      "text": "ACCIS\tAutomated Command and Control Information System ACCM\tAcoustic Counter Counter Measure",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 236,
+      "text": "ACCORD\tAdvanced Command and Control Research Demonstrator ACCORD\tApplication to Co-ordinate Comments On Repository ACCS\tAdvanced Communications Control System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 238,
+      "text": "ACCS\tAirborne Computing and Communications System ACCS\tAllied Command and Control System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 240,
+      "text": "ACCS\tAuthorisation Condition Compliance Statement ACCSA\tAllied Communications and Computer Security Agency ACCSCO\tACCS Company",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 252,
+      "text": "ACDS\t Advanced Countermeasures Dispenser System ACDS\tAir Combat Direction System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 254,
+      "text": "ACDS\tAutomatic Computer-controlled Dispensing System ACDS\t Automatic Countermeasures Dispensing System ACDS (Ops)\t Assistant Chief of Defence Staff (Operations)",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 255,
+      "text": "ACDS(CIS)\tAssistant Chief Defence Staff (Command-Control-Comms and Info Sys) ACDS(L)\tAssistant Chief Defence Staff (Logistics)",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 256,
+      "text": "ACDS(O)\tAssistant Chief Defence Staff (Overseas) ACDS(Prog)\tAssistant Chief Defence Staff (Programmes)",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 257,
+      "text": "ACDSLogOps\tAssistant Chief of the Defence Staff Logistic Operations ACDU\t Area Clearance Diving Unit",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 265,
+      "text": "ACE\tAsset Control and Evaluation ACE COMSEC\tACE Communications Security",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 266,
+      "text": "ACE High\tACE tropo-scatter communications system ACEATM\t Aimed Controlled Effect Anti Tank Mine ACELIP\t ACE Long-term Infrastructure Plan",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 274,
+      "text": "ACETEF\tAir Combat Environment Test and Evaluation Facility ACEWS\tAutomated Computer Assisted Electronic Warfare System ACF\tAcquisition Competence Framework",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 282,
+      "text": "ACHDF\tAir Commander Home Defence Forces AChE\t AcetylCholinEsterase",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 285,
+      "text": "ACIA\tAsynchronous Communications Interface Adapter ACID\tAtomicity Consistency Isolation and Durability",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 289,
+      "text": "ACISG\tArms Command and Control, Communications and Information Systems Group ACL\tAccess Control List",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 300,
+      "text": "ACMEST\tAir Combat Manoeuvring Expert Systems Trainer ACMI\tAir Combat Manoeuvring Instrumentation",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 304,
+      "text": "ACMS\tApplication Control and Management System ACMS\tArmament Control and Monitoring System ACMS\tAutomatic Communication Management System ACMT\tAdvanced Cruise Missile Technology",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 307,
+      "text": "ACNIP\tAuxiliary Communications, Navigation and Identification Panel ACNS\tAssistant Chief of the Naval Staff",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 320,
+      "text": "ACOS(CIS)\tAssistant Chief of Staff (Communications and Information systems) ACOS(M&D)\tAssistant Chief of Staff (Medical & Dental)",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 321,
+      "text": "ACOS(OPS)\tAssistant Chief of Staff (Operations and Plans) ACOS(P&S)\t Assistant Chief of Staff (Personnel and Support) ACOS(POL)\t Assistant Chief of Staff (Policy)",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 323,
+      "text": "ACOST\tAdvisory Committee on Science and Technology ACOVS\tArtillery Combat Observer Vehicle Simulator ACP\tActive Cathodic Protection",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 340,
+      "text": "A-CREDIT\tAutomated Cost Resource and Data Integration Tool ACRIM\tActive Cavity Radiometer Irradiance Monitor",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 341,
+      "text": "ACRV\tArmoured Command and Reconnaissance Vehicle Acs\tAgreed Characteristics",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 355,
+      "text": "ACSA(C)\t Assistant Chief Scientific Advisor (Capabilities) ACSA(N)\tAssistant Chief Scientific Advisor (Nuclear) ACSA(P)\tAssistant Chief Scientific Advisor (Projects) ACSA(R)\tAssistant Chief Scientific Advisor (Research) ",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 360,
+      "text": "ACSM\tAssemblies Component Spare parts and Materials ACSR\tActive Control of Structural Response",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 361,
+      "text": "ACSSB\tAmplitude Companded Single Side-Band ACSTB\tAir Command System Test Bed",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 362,
+      "text": "ACSTP\t ACE Command and Staff Training Program ACSU\tAir Combat Support Unit",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 372,
+      "text": "ACTD\t Advanced Concept Technology Demonstrator ACTEW\tAcoustic Charged Transport Electronic Warfare ACTIS\tAdvanced Compact Thermal Imaging System ACTO\tAttractive to Criminals and Terrorist Organisations ACTS\tAdvanced Comm",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 390,
+      "text": "ACVT\tArmoured Combat Vehicle Technology Programme ACVT\tArmoured Combat Vehicle Tracked",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 392,
+      "text": "ACWAR\t Agile Continuous Wave Acquisition Radar ACWS\tAdvanced Colour Work Station",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 409,
+      "text": "AD/ADE\t Assistant Director/Armaments, Documentation and Engineering AD/ADRP\tAD/Airworthiness, Design Requirements and Procedures in the DPA AD/Cycle\t Analysis and Design (through life) to Code generation",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 410,
+      "text": "AD/Eng Pol\t AD/Engineering Policy in DGES(Air) DLO AD/IE\tAssistant Director Information Engineering",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 411,
+      "text": "AD/MR(Nuc)\tAssistant Director Material and Research (Nuclear) AD/OE\tAssistant Director/Ordnance Engineering",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 412,
+      "text": "AD/QOI\t Assistant Director/Quality Ordnance Inspection AD/TC\t Assistant Director Trident Co-ordination AD/XJAM\tArtillery Delivered Expendable Jammer",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 419,
+      "text": "ADACS\tAirborne Digital Automatic Collection system ADACS\tAlarm and Distributed Access Control System ADAD\tAir Defence Alerting Device",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 420,
+      "text": "ADAM\tArea Denial Artillery Munitions ADAMS\tAir Defence Advanced Mobile System ADAMS\tAir Defence Anti-Missile System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 421,
+      "text": "ADAMS\t Allied Deployment & Movement System ADAPS\tAutomatic Data Acquisition and Processing",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 422,
+      "text": "ADAPT\tAcquisition of NEC and Dabinett Programme Team ADAR\tAirfield Damage And Repair",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 423,
+      "text": "ADARIO\tAnalogue/Digital Adaptable Recorder Input/Output ADARS\tAdaptive Antenna Receiver System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 429,
+      "text": "ADATS DT\tAir Defence and Air Traffic Systems Delivery Team ADAU\tAuxiliary Data Acquisition Unit",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 430,
+      "text": "ADAWS\tAction Data Automatic Weapons System ADAWS\tAction Data Automation Weapon System ADAWW\tAssistant Director Above Water Warfare ADAZ\tAir Defence Zone",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 431,
+      "text": "ADBMS\tAir Defence Battle Management Simulation ADBriC\tAir Defence Bridging Capability",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 434,
+      "text": "ADC\tAdditional Duties Commitment (type of reserve service) ADC\tAide-De-Camp",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 448,
+      "text": "ADC/WDO\t Action Data & Communications / Weapons Delivery & Ordnance ADCA\tAdvanced Design Composite Aircraft",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 450,
+      "text": "ADCAPARM\tAdvanced Capabilities Anti-Radar Missile ADCC\tAir Defence Control Centre",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 452,
+      "text": "ADCIS\t Air Defence Communication and Information System ADCIS\tArmy Air Defence CIS System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 465,
+      "text": "ADE\tAeronautical Development Establishment ADEA\tArmy Development and Employment Agency ADECS\tAdvanced Digital Engine Control System ADEKS\tAdvanced Design Electronics Key System ADELA\tAtlantic Development Group for Latin ",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 466,
+      "text": "ADELT\tAutomatically Deployable Emergency Locator Transponder ADEN\tArmament Designed Enfired",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 467,
+      "text": "ADESM\tAutomatic Data Extraction from Signal Messages ADEWS\tAir Defence Electronic Warfare System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 485,
+      "text": "ADIRS\tAirfield Damage Information and Reporting System ADIT\tAutomatic Detection and Tracking Unit",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 486,
+      "text": "ADITT\tAerially Deployed Ice Thickness Transponder ADIVS\tAir Defence Inter-operability Validation System ADIZ\tAir Defence Identification Zone",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 495,
+      "text": "ADLBS\tASACS Data Link Buffer System ADLIPS\tAutomatic Data Link Plotting System ADLS\tAssistant Director Logistic Support",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 507,
+      "text": "ADMEM\tAcademic Department of Military Emergency Medicine Admin\tAdministrator/Administration",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 508,
+      "text": "ADMIS\t Army Department Management Information System ADMT\tAssistant Director Movements and Transport",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 510,
+      "text": "ADNAR\tAssistant Director Nuclear Accident Response ADNC\tAir Defence Notification Centre",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 511,
+      "text": "ADNOCS\tAdvanced Digital Optical Control System ADNP\tAssistant Director Nuclear Propulsion",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 514,
+      "text": "ADOPT\tAerodynamic Design Optimisation for Long Duct Nacelles ADP\t Admiralty Driving Permit.",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 522,
+      "text": "ADPA\tAmerican Defence Preparedness Association ADPCM\tAdaptive Differential Pulse Code Modulation",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 527,
+      "text": "ADPMP(QA)\tAssistant Director Procurement Management Policy (Quality Assurance) ADPS(SS)\tAssistant Director Programmes and Support (Strategic systems)",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 528,
+      "text": "ADPSO\tAutomatic Data Processing Selection Office ADQS\tAssistant Director Quality and Safety",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 537,
+      "text": "ADR(LS)\tAssistant Director Research (Life Sciences) ADR+\tAdvanced Digital Radio +",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 538,
+      "text": "ADRC\tAdvanced Defence Radar Controller ADREF No\tAdmiralty Reference Number",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 541,
+      "text": "ADROWPU\t Advanced Double Pass Reverse Osmosis Water Purification Unit ADRP\tAircraft Design Approvals Requirements & Procedure",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 543,
+      "text": "ADRTIES\t Advanced Digital Radar Imagery Exploitation System ADRU\tAdvanced Defence Radar Unit",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 557,
+      "text": "ADS/PS\tAssistant Director Project Support AdSAAMS\tAdvanced Surface-to-Air Missile System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 558,
+      "text": "ADSAF\tAutomatic Data System for the Army in the Field ADSCM\tAdvanced Ship Communications",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 560,
+      "text": "ADSIA\tAllied Data Systems Interoperability Agency ADSL\tAsymmetrical Digital Subscriber Line",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 564,
+      "text": "ADSR(CD))\tAssistant Director Ship Refitting (Corporate Development) ADST\tAssistant Director Supply and Transport",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 592,
+      "text": "Adv Sig(S)\tAdvanced Signaller (Systems) Advc\tAdvice",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 595,
+      "text": "ADVICE\tAnalogue and Digital Video Integrator and Contrast Advn\tAdventurous",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 601,
+      "text": "ADWRFS\tArmament Depot Weapon Repair Facility Statement ADZ\t Air Danger Zone",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 608,
+      "text": "AEA/SRD\t Atomic Energy/Safety & Reliability Directorate AEB\tActive Electronic Buoy",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 619,
+      "text": "AECMA\tAssociation European des Constructeurs de Materiel Aerospatial AECO\tAeromedical Evacuation Coordinating Officer",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 626,
+      "text": "AEDIT\tAircraft Engineering Development & Investigation Team AEDS\tAtomic Energy Detection System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 628,
+      "text": "AEFSS\tAutomatic Explosion/Fire Sensing and Suppression system AEGIS\tAdvanced Engine/Gearbox Integrated System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 629,
+      "text": "AEGIS\tAirborne Early Warning Ground Integration Segment AEGIS\tAirborne Early Warning Ground Integration System AEI\tAustralian Electronics Industry Association",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 633,
+      "text": "AEMIS\t Army Equipment Management Information System AEMS\tAviation Error Management System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 638,
+      "text": "AEOOW\t Assistant Engineer Officer of the Watch AEP\tApplication Environment Profile",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 648,
+      "text": "AESB\tArmy Environmental and Safety Board AESITS\tAviation Equipment Support IT System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 649,
+      "text": "AESOP\tAircraft Equipment Support On-Line Packages AESP\t Army Engineering Support Publication",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 654,
+      "text": "AETIWG\tAir Environment Threat Information Working Group AETMS\tAirborne Electronic Terrain Mapping System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 662,
+      "text": "AEWTF\tAir-crew Electronic Warfare Tactics Facility AF\tAdmiral of the Fleet",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 675,
+      "text": "AFAAMS\tAnglo-French Air-to-Air Missile System/Anti-air Multi-spectral Seeker AFAATC\tAir Force and Anti-Aircraft Training Command",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 677,
+      "text": "AFARV\tArmoured Forward-Area Rearm Vehicle AFAS\tAdvanced Field Artillery System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 678,
+      "text": "AFASD\tAir Force Aeronautics systems Division AFASPO\tAir Force Automated Systems Project Office AFATDS\tAdvanced Field Artillery Tactical Data System AFATL\tAir Force Armaments Laboratory",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 681,
+      "text": "AFBMA\tAnti-Friction Bearing Manufacturers Association AFBMD\tAir Force Ballistic Missile Division",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 688,
+      "text": "AFCAS\tAutomatic Flight Control Augmentation System AFCC\tAir Force Communications Command",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 689,
+      "text": "AFCEA\t Armed Forces Communications and Electronics Association AFCENT\tAllied Forces Central Europe",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 691,
+      "text": "AFCMD\tAir Force Contract Management Division AFCO\tArmed Force Careers Office",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 701,
+      "text": "AFDE\tArctic Fuels Dispensing Equipment AFDRG\tAnglo French Defence Research Group AFDS\tAdvanced Flight-Deck Simulator",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 711,
+      "text": "AFEDDS\tAutomatic Fire and Explosion Detection and Suppression System AFES\tAutomatic Fire Extinguishing System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 712,
+      "text": "AFESD\tAir Force Electronic Systems Division AFEWC\tAir Force Electronic Warfare Centre",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 713,
+      "text": "AFEWES\tAir Force Electronic Warfare Evaluation Simulator AFEX\tAnglo-French Exchange meeting",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 714,
+      "text": "AFFAS\tArmed Forces Financial Advisory Services AFFF\tAnglo-French Future Frigate",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 731,
+      "text": "AFMM (M)\tAssistant Functional Machinery Manager (Maintenance) AFMM (P)\tAssistant Functional Machinery Manager (Proc) AFMM(PROC)\tAssistant Functional Machinery Manager (Procurement) AFMS\tAutomatic Flight Management System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 732,
+      "text": "AFNCP\t Anglo-French-Netherlands Collaboration Programme AFNO\tAmphibious Forces Notes and Orders",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 734,
+      "text": "AFNOR\tAssociation Francais de Normalisation AFNORTH\t Allied Forces Northern Europe",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 737,
+      "text": "AFOLTS\tAutomatic Fire Overheat Logic Test System AFOPG\tAir Force Operating and Performance Group AFOPS\tArmed Forces Overarching Personnel Strategy AFOPS\tArmed Forces Over-Arching Personnel Strategy AFOSR\tAir Force Office",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 741,
+      "text": "AFPAA\tArmed Forces Personnel Administration Agency AFPAK\tAfghanistan / Pakistan",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 755,
+      "text": "AFS(H)\t Auxiliary Fleet Support (with Helicopter) AFS(N)\tAuxiliary Forward Support (Helicopters) AFSARC\tAir Force Systems Acquisition Review Council AFSAT\tAir Force Satellite",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 756,
+      "text": "AFSATCOM\tAir Force Satellite Communications System AFSC\tAir Force Systems Command",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 760,
+      "text": "AFSED\tArab Fund for Economic and Social Development AFSH\tAuxiliary, Fleet Support, Helicopter carrying",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 761,
+      "text": "AFSK\t Audio Frequency Shift Keying AFSONOR\tAllied Forces South Norway AFSOUTH\tAllied Forces Southern Europe AFSTC\tAir Force Space Technology Centre",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 766,
+      "text": "AFTN\tAeronautical Fixed Telecommunications Network AFTS\tAir-tech Firearms Training System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 771,
+      "text": "AFV Det\tArmoured Fighting Vehicle Detector AFWAL\tAir Force Wright Aeronautical Laboratory AFWL\tAir Force Weapons Laboratory",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 779,
+      "text": "AGARD\tAdvisory Group for Aerospace Research & Development AGC\tAdjutant General's Corps",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 781,
+      "text": "AGCAS\t Association of Graduate Careers Advisory Services AGCS\tAdvanced Guidance and Control System",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 782,
+      "text": "AGCW\tAutonomous Guidance for Conventional Weapons AGCW\tAutonomously Guided Conventional Weapon",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 787,
+      "text": "AGES\tAir Ground Engagement System AGES/AD\tAir-to-Ground Engagement/Air Defence AGETS\tAutomated Ground Engine Test System AGEX\tAnglo-German Exchange meeting",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 798,
+      "text": "AGMA\tAmerican Gear Manufacturers Association AGOG\tAir Ground Operation Group",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 799,
+      "text": "AGOUTI\t System for raising propellor cavitation speed AGPPE\tAdvanced General Purpose Processor Element AGR\tAdvanced Gas-cooled Reactor",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 801,
+      "text": "AGREE\tAdvisory Group on Reliability in Electronic Equipment AGS\tAdvanced Ground Station",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 823,
+      "text": "AHE\tAmmunition Handling Equipment AHEAD\tAdvanced Hit Efficiency And Destruction",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 824,
+      "text": "AHEM\tAssociation of Hydraulic Equipment Manufacturers AHIP\t Army Helicopter Improvement Programme",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 835,
+      "text": "AHTOC\tAttack Helicopter Target Operational Characteristics AI\tAdministrative Instruction",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 843,
+      "text": "AIAA\tAmerican Institute of Aeronautics and Astronautics AIAAM\tAdvanced Intercept Air-to-Air Missile",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 851,
+      "text": "AICORN\tAdaptive Intelligent Control of Radio Networks AICP\tAnglo-Italian Collaboration Programme",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 852,
+      "text": "AICRO\tAssociation of Independent Contract Research Organisations AID\tAgency for International Development",
+      "reason": "multiple tabs / heuristic split"
+    },
+    {
+      "paragraph": 855,
+      "text": "AIDLO\tAtomic and International Defence liaison Officer AIDS\t Acoustic Intelligence Data System",
+      "reason": "multiple tabs / heuristic split"
+    }
+  ]
+}

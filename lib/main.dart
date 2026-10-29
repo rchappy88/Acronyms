@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:archive/archive.dart';
 import 'directory_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:xml/xml.dart';
 
 void main() => runApp(const AcronymsApp());
 
@@ -76,7 +74,6 @@ class AcronymSearchPage extends StatefulWidget {
 }
 
 class _AcronymSearchPageState extends State<AcronymSearchPage> {
-  static const _savedDirectoryKey = 'saved_acronym_directory_v2';
   static const _savedCustomKey = 'saved_custom_acronyms_v1';
   static const _categories = [
     'REME',
@@ -92,6 +89,7 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
   final _directory = [...acronymDirectory];
   Timer? _searchDebounce;
   String _query = '';
+  String _selectedCategory = 'All';
 
   @override
   void initState() {
@@ -100,24 +98,23 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
   }
 
   Future<void> _loadSavedDirectory() async {
-    final saved = await readDirectory(_savedDirectoryKey);
-    final custom = await readDirectory(_savedCustomKey);
-    final customEntries = custom == null ? <AcronymEntry>[] : _decodeEntries(custom);
-    if (saved != null) {
-      final restored = _decodeEntries(saved);
-      if (restored.isNotEmpty && mounted) {
-        setState(() {
-          _directory
-            ..clear()
-            ..addAll(_uniqueEntries([...restored, ...customEntries]));
-        });
-        return;
-      }
-    }
-    await _loadDocument();
-    if (customEntries.isNotEmpty && mounted) {
-      setState(() => _directory.addAll(_uniqueEntries(customEntries)));
-      await _saveDirectory();
+    try {
+      final source = await rootBundle.loadString('assets/acronyms.json');
+      final official = _decodeEntries(source);
+      final custom = await readDirectory(_savedCustomKey);
+      final personal = custom == null ? <AcronymEntry>[] :
+          _decodeEntries(custom).where((entry) => entry.category != 'MOD directory').toList();
+      if (!mounted) return;
+      setState(() {
+        _directory
+          ..clear()
+          ..addAll(_uniqueEntries([...official, ...personal]));
+      });
+    } catch (error) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Unable to load acronym directory: $error')),
+      );
     }
   }
 
@@ -133,48 +130,6 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
         .toList();
   }
 
-  Future<void> _loadDocument() async {
-    final bytes = await rootBundle.load('assets/acronyms_mod.docx');
-    final archive = ZipDecoder().decodeBytes(bytes.buffer.asUint8List());
-    final document = archive.findFile('word/document.xml');
-    if (document == null) return;
-
-    final xml = XmlDocument.parse(utf8.decode(document.content as List<int>));
-    final imported = <AcronymEntry>[];
-    for (final paragraph in xml.descendants.whereType<XmlElement>().where((element) => element.name.local == 'p')) {
-      final parts = <String>[];
-      var current = StringBuffer();
-      for (final element in paragraph.descendants.whereType<XmlElement>()) {
-        if (element.name.local == 'tab' && element.parent is XmlElement && (element.parent! as XmlElement).name.local == 'r') {
-          parts.add(current.toString());
-          current = StringBuffer();
-        } else if (element.name.local == 't') {
-          current.write(element.innerText);
-        }
-      }
-      parts.add(current.toString());
-      imported.addAll(_parseParts(parts));
-    }
-
-    if (!mounted || imported.isEmpty) return;
-    setState(() {
-      _directory
-        ..clear()
-        ..addAll(_uniqueEntries(imported));
-    });
-    await _saveDirectory();
-  }
-
-  Future<void> _saveDirectory() async {
-    final encoded = jsonEncode(_directory.map((entry) => {
-          'shortName': entry.shortName,
-          'meaning': entry.meaning,
-          'category': entry.category,
-          'description': entry.description,
-        }).toList());
-    await writeDirectory(_savedDirectoryKey, encoded);
-  }
-
   Future<void> _saveCustomEntries() async {
     final custom = _directory.where((entry) => entry.category != 'MOD directory').toList();
     final encoded = jsonEncode(custom.map((entry) => {
@@ -186,32 +141,6 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
     await writeDirectory(_savedCustomKey, encoded);
   }
 
-  String _clean(String value) => value.replaceAll(RegExp(r'\s+'), ' ').trim();
-
-  List<AcronymEntry> _parseParts(List<String> parts) {
-    if (parts.length < 2) return [];
-    final entries = <AcronymEntry>[];
-    var shortName = _clean(parts.first);
-    for (var index = 1; index < parts.length; index++) {
-      final segment = _clean(parts[index]);
-      if (index == parts.length - 1) {
-        if (shortName.isNotEmpty && segment.isNotEmpty) {
-          entries.add(AcronymEntry(shortName, segment, 'MOD directory'));
-        }
-        break;
-      }
-
-      final nextAcronym = RegExp(r"\s+([A-Z0-9][A-Z0-9&/().*\-']{1,})$").firstMatch(segment);
-      if (nextAcronym == null) continue;
-      final meaning = _clean(segment.substring(0, nextAcronym.start));
-      if (shortName.isNotEmpty && meaning.isNotEmpty) {
-        entries.add(AcronymEntry(shortName, meaning, 'MOD directory'));
-      }
-      shortName = nextAcronym.group(1)!;
-    }
-    return entries;
-  }
-
   List<AcronymEntry> _uniqueEntries(List<AcronymEntry> entries) {
     final seen = <String>{};
     return entries.where((entry) => seen.add('${entry.shortName}|${entry.meaning}')).toList();
@@ -219,8 +148,11 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
 
   List<AcronymEntry> get _results {
     final query = _query.trim().toLowerCase();
-    if (query.isEmpty) return _directory;
+    if (query.isEmpty) return _selectedCategory == 'All'
+        ? _directory
+        : _directory.where((entry) => entry.category == _selectedCategory).toList();
     final matches = _directory.where((entry) {
+      if (_selectedCategory != 'All' && entry.category != _selectedCategory) return false;
       return entry.shortName.toLowerCase().contains(query) ||
           entry.meaning.toLowerCase().contains(query) ||
           entry.category.toLowerCase().contains(query) ||
@@ -239,7 +171,7 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
           ? leftIsPersonal.compareTo(rightIsPersonal)
           : originalPositions[left]!.compareTo(originalPositions[right]!);
     });
-    return matches.take(10).toList();
+    return matches;
   }
 
   int _matchRank(AcronymEntry entry, String query) {
@@ -294,7 +226,7 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
     await showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Add an acronym'),
+        title: const Text('Add a personal acronym'),
         content: Form(
           key: formKey,
           child: SingleChildScrollView(
@@ -352,11 +284,10 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
                   description,
                 ));
               });
-              _saveDirectory();
               _saveCustomEntries();
               Navigator.pop(context);
             },
-            child: const Text('Add'),
+            child: const Text('Save on this device'),
           ),
         ],
       ),
@@ -413,6 +344,18 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
                     ),
             ),
           ),
+          const SizedBox(height: 14),
+          DropdownButtonFormField<String>(
+            initialValue: _selectedCategory,
+            decoration: const InputDecoration(labelText: 'Filter category'),
+            items: ['All', 'MOD directory', ..._categories]
+                .map((category) => DropdownMenuItem(value: category, child: Text(category)))
+                .toList(),
+            onChanged: (value) => setState(() => _selectedCategory = value ?? 'All'),
+          ),
+          const SizedBox(height: 12),
+          Text('Personal additions are saved on this device only. Shared submissions will be added later.',
+              style: theme.textTheme.bodySmall),
           const SizedBox(height: 18),
           Text(
             '${_results.length} ${_results.length == 1 ? 'result' : 'results'}',
@@ -542,7 +485,6 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
               setState(() {
                 _directory[index] = AcronymEntry(shortName, meaning, category, description);
               });
-              _saveDirectory();
               _saveCustomEntries();
               Navigator.pop(context);
             },
