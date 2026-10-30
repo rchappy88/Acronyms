@@ -46,13 +46,25 @@ class AcronymsApp extends StatelessWidget {
     );
   }
 }
+
 class AcronymEntry {
-  const AcronymEntry(this.shortName, this.meaning, this.category, [this.description = '']);
+  const AcronymEntry(
+    this.shortName,
+    this.meaning,
+    this.category, [
+    this.description = '',
+    this.id,
+    this.source,
+  ]);
+
   final String shortName;
   final String meaning;
   final String category;
   final String description;
+  final String? id;
+  final String? source;
 }
+
 const acronymDirectory = [
   AcronymEntry('API', 'Application Programming Interface', 'Technology'),
   AcronymEntry('ASAP', 'As Soon As Possible', 'Everyday'),
@@ -87,20 +99,66 @@ class _AcronymSearchPageState extends State<AcronymSearchPage> {
   final _searchController = TextEditingController();
   final _directory = [...acronymDirectory];
   List<AcronymEntry> _communityEntries = [];
+  
+Map<String, AcronymEntry> _approvedCorrections = {};
+
   Timer? _searchDebounce;
   String _query = '';
   String _selectedCategory = 'All';
+
 @override
 void initState() {
   super.initState();
   _loadSavedDirectory();
   _loadCommunityEntries();
+  _loadApprovedCorrections();
 }
+
+
+Future<void> _loadApprovedCorrections() async {
+  try {
+    final response = await Supabase.instance.client
+        .from('approved_corrections')
+        .select(
+          'original_entry_id, original_entry_source, '
+          'acronym, meaning, category, description',
+        )
+        .order('created_at', ascending: true);
+
+    final corrections = <String, AcronymEntry>{};
+
+    for (final item in response) {
+      final originalId = item['original_entry_id'].toString();
+      final source = item['original_entry_source'].toString();
+      final key = '$source:$originalId';
+
+      corrections[key] = AcronymEntry(
+        item['acronym'] as String,
+        item['meaning'] as String,
+        item['category'] as String,
+        item['description']?.toString() ?? '',
+        originalId,
+        source,
+      );
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      _approvedCorrections = corrections;
+    });
+  } catch (error) {
+    debugPrint('Unable to load approved corrections: $error');
+  }
+}
+
 Future<void> _loadCommunityEntries() async {
   try {
     final response = await Supabase.instance.client
         .from('approved_acronyms')
-        .select('acronym, meaning, category, description')
+        
+.select('id, acronym, meaning, category, description')
+
         .order('created_at', ascending: false);
     final entries = response.map((item) {
       return AcronymEntry(
@@ -108,6 +166,8 @@ Future<void> _loadCommunityEntries() async {
         item['meaning'] as String,
         item['category'] as String,
         item['description']?.toString() ?? '',
+         item['id']?.toString(),
+  'community',
       );
     }).toList();
     if (!mounted) return;
@@ -138,36 +198,46 @@ Future<void> _loadCommunityEntries() async {
       );
     }
   }
-  List<AcronymEntry> _decodeEntries(String encoded) {
-    final decoded = jsonDecode(encoded) as List<dynamic>;
-    return decoded
-        .map((item) => AcronymEntry(
-              item['shortName'] as String,
-              item['meaning'] as String,
-              item['category'] as String,
-              item['description']?.toString() ?? '',
-            ))
-        .toList();
-  }
-  Future<void> _saveCustomEntries() async {
-    final custom = _directory.where((entry) => entry.category != 'MOD directory').toList();
-    final encoded = jsonEncode(custom.map((entry) => {
-          'shortName': entry.shortName,
-          'meaning': entry.meaning,
-          'category': entry.category,
-          'description': entry.description,
-        }).toList());
-    await writeDirectory(_savedCustomKey, encoded);
-  }
+
+List<AcronymEntry> _decodeEntries(String encoded) {
+  final decoded = jsonDecode(encoded) as List<dynamic>;
+
+  return decoded.map((item) {
+    final entry = item as Map<String, dynamic>;
+
+    return AcronymEntry(
+      entry['shortName'] as String,
+      entry['meaning'] as String,
+      entry['category'] as String,
+      entry['description']?.toString() ?? '',
+      entry['id']?.toString(),
+      entry['category'] == 'MOD directory'
+          ? 'mod_directory'
+          : null,
+    );
+  }).toList();
+}
+
+  
   List<AcronymEntry> _uniqueEntries(List<AcronymEntry> entries) {
     final seen = <String>{};
     return entries.where((entry) => seen.add('${entry.shortName}|${entry.meaning}')).toList();
   }
 List<AcronymEntry> get _results {
-  final allEntries = _uniqueEntries([
-    ..._directory,
-    ..._communityEntries,
-  ]);
+  
+final allEntries = _uniqueEntries(
+  [..._directory, ..._communityEntries].map((entry) {
+    final id = entry.id;
+    final source = entry.source;
+
+    if (id == null || source == null) {
+      return entry;
+    }
+
+    return _approvedCorrections['$source:$id'] ?? entry;
+  }).toList(),
+);
+
   final query = _query.trim().toLowerCase();
   if (query.isEmpty) {
     return _selectedCategory == 'All'
@@ -424,6 +494,8 @@ await Navigator.of(context).push(
 if (!mounted) return;
 
 await _loadCommunityEntries();
+await _loadApprovedCorrections();
+
 
 if (!mounted) return;
 
@@ -648,6 +720,49 @@ Future<void> _submitAcronym({
 }
 debugPrint('Submission accepted and awaiting approval');
 }
+
+Future<void> _submitCorrection({
+  required AcronymEntry original,
+  required String acronym,
+  required String meaning,
+  required String category,
+  required String description,
+  required String turnstileToken,
+}) async {
+  if (original.id == null || original.source == null) {
+    throw Exception('This acronym has no valid original entry ID.');
+  }
+
+  final response = await Supabase.instance.client.functions.invoke(
+    'submit_acronym',
+    body: {
+      'submissionType': 'correction',
+      'acronym': acronym,
+      'meaning': meaning,
+      'category': category,
+      'description': description,
+      'turnstileToken': turnstileToken,
+      'originalEntryId': original.id,
+      'originalEntrySource': original.source,
+      'originalAcronym': original.shortName,
+      'originalMeaning': original.meaning,
+      'originalCategory': original.category,
+      'originalDescription': original.description,
+    },
+  );
+
+  if (response.status != 200 ||
+      response.data is! Map ||
+      response.data['message'] !=
+          'Correction submitted successfully. Awaiting approval.') {
+    throw Exception(
+      'Correction was not accepted: ${response.data}',
+    );
+  }
+
+  debugPrint('Correction accepted and awaiting approval');
+}
+
 Widget _buildHeader(ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 36, 20, 26),
@@ -760,6 +875,7 @@ Widget _buildHeader(ThemeData theme) {
               ],
             ),
           ),
+          if (entry.id != null && entry.source != null)
           IconButton(
             tooltip: 'Edit acronym',
             onPressed: () => _showEditDialog(entry),
@@ -775,10 +891,11 @@ Widget _buildHeader(ThemeData theme) {
     var meaning = entry.meaning;
     var category = entry.category;
     var description = entry.description;
+    String? turnstileToken;
     await showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Edit acronym'),
+        title: const Text('Suggest a Correction'),
         content: Form(
           key: formKey,
           child: SingleChildScrollView(
@@ -801,7 +918,7 @@ Widget _buildHeader(ThemeData theme) {
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
-                  initialValue: _categories.contains(entry.category) ? entry.category : 'Other',
+                  initialValue: entry.category,
                   decoration: const InputDecoration(labelText: 'Category'),
                   items: [
                     ..._categories.map((item) => DropdownMenuItem(value: item, child: Text(item))),
@@ -822,27 +939,75 @@ Widget _buildHeader(ThemeData theme) {
                     alignLabelWithHint: true,
                   ),
                   onSaved: (value) => description = value?.trim() ?? '',
+
+                ),
+                const SizedBox(height: 16),
+                CloudflareTurnstile(
+                  siteKey: '0x4AAAAAAFq-AjUiS1nkhyX7',
+                  onTokenReceived: (token) {
+                    turnstileToken = token;
+                    debugPrint(
+                      'Correction Turnstile verification completed',
+                    );
+                  },
                 ),
               ],
             ),
+
           ),
         ),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
-          FilledButton(
-            onPressed: () {
-              if (!formKey.currentState!.validate()) return;
-              formKey.currentState!.save();
-              final index = _directory.indexOf(entry);
-              if (index < 0) return;
-              setState(() {
-                _directory[index] = AcronymEntry(shortName, meaning, category, description);
-              });
-              _saveCustomEntries();
-              Navigator.pop(context);
-            },
-            child: const Text('Save'),
+          
+FilledButton(
+  onPressed: () async {
+    if (!formKey.currentState!.validate()) return;
+
+    if (turnstileToken == null || turnstileToken!.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please complete Cloudflare verification first.'),
+        ),
+      );
+      return;
+    }
+
+    formKey.currentState!.save();
+
+    try {
+      await _submitCorrection(
+        original: entry,
+        acronym: shortName,
+        meaning: meaning,
+        category: category,
+        description: description,
+        turnstileToken: turnstileToken!,
+      );
+
+      if (!mounted || !context.mounted) return;
+
+      Navigator.pop(context);
+
+      ScaffoldMessenger.of(this.context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Thank you! Your correction is awaiting administrator approval.',
           ),
+        ),
+      );
+    } catch (error) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(this.context).showSnackBar(
+        SnackBar(
+          content: Text('Correction submission failed: $error'),
+        ),
+      );
+    }
+  },
+  child: const Text('Submit Correction'),
+),
+
         ],
       ),
     );
@@ -898,7 +1063,14 @@ class _AdminDashboardState extends State<AdminDashboard> {
 
     final response = await client
         .from('acronym_submissions')
-        .select('id, acronym, meaning, category, description, created_at')
+        
+.select(
+  'id, acronym, meaning, category, description, created_at, '
+  'submission_type, original_entry_id, original_entry_source, '
+  'original_acronym, original_meaning, original_category, '
+  'original_description',
+)
+
         .eq('status', 'pending')
         .order('created_at', ascending: true);
     return List<Map<String, dynamic>>.from(response);
@@ -1039,16 +1211,44 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       ),
                     ],
                   ),
-                  title: Text(submission['acronym']?.toString() ?? ''),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(submission['meaning']?.toString() ?? ''),
-                      Text('Category: ${submission['category'] ?? 'Other'}'),
-                      if ((submission['description'] ?? '').toString().isNotEmpty)
-                        Text(submission['description'].toString()),
-                    ],
-                  ),
+                  
+title: Text(
+  '${submission['submission_type'] == 'correction' ? '[CORRECTION]' : '[NEW]'} '
+  '${submission['acronym']?.toString() ?? ''}',
+),
+
+                  
+subtitle: Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    if (submission['submission_type'] == 'correction') ...[
+      const SizedBox(height: 8),
+      const Text(
+        'ORIGINAL ENTRY',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      Text('Acronym: ${submission['original_acronym'] ?? ''}'),
+      Text('Meaning: ${submission['original_meaning'] ?? ''}'),
+      Text('Category: ${submission['original_category'] ?? ''}'),
+      Text('Description: ${submission['original_description'] ?? ''}'),
+      const SizedBox(height: 12),
+      const Text(
+        'PROPOSED CORRECTION',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      Text('Acronym: ${submission['acronym'] ?? ''}'),
+      Text('Meaning: ${submission['meaning'] ?? ''}'),
+      Text('Category: ${submission['category'] ?? ''}'),
+      Text('Description: ${submission['description'] ?? ''}'),
+    ] else ...[
+      Text(submission['meaning']?.toString() ?? ''),
+      Text('Category: ${submission['category'] ?? 'Other'}'),
+      if ((submission['description'] ?? '').toString().isNotEmpty)
+        Text(submission['description'].toString()),
+    ],
+  ],
+),
+
                 ),
               );
             },
